@@ -1,4 +1,4 @@
-package com.ryanprado.senai.domain;
+package com.Danilo.senai.domain;
 
 import java.io.Serializable;
 
@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Endereço implements Serializable {
+public class Endereco implements Serializable {
 	private static final long serialVersionUID = 1l;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,9 +27,15 @@ public class Endereço implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "cidade_id") // varios endereços um cliente
 	private Cidade cidade;
-	private Cliente cliente;
 
-	public Endereço(Integer id, String logradouro, String numero, String complemento, String bairro, String cep,
+	@ManyToOne
+	private Cliente cliente;
+	
+	public Endereco() {
+		
+	}
+
+	public Endereco(Integer id, String logradouro, String numero, String complemento, String bairro, String cep,
 			Cliente cliente, Cidade cidade) {
 		super();
 		this.id = id;
@@ -118,7 +124,7 @@ public class Endereço implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Endereço other = (Endereço) obj;
+		Endereco other = (Endereco) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

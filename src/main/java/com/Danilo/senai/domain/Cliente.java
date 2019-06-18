@@ -1,4 +1,4 @@
-package com.ryanprado.senai.domain;
+package com.Danilo.senai.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.ryanprado.senai.domain.enums.TipoCliente;
+import com.Danilo.senai.domain.enums.TipoCliente;
 
 @Entity // Avisa ao JPA que será uma tabela.
 public class Cliente implements Serializable {
@@ -38,21 +38,14 @@ public class Cliente implements Serializable {
 	@CollectionTable(name = "TELEFONE")
 	private Set<String> telefones = new HashSet<>();
 
+	// Cascade e para se excluir cliente o endereço seja excluido
+	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+	private List<Endereco> enderecos = new ArrayList<>();
+
 	// Construtor
 	public Cliente() {
 
 	}
-	//Cascade e para se excluir cliente o  endereço seja excluido
-		@OneToMany(mappedBy = "cliente", cascade= CascadeType.ALL)
-		private List<Endereço> enderecos = new ArrayList<>(); 
-		
-	public List<Endereço> getEnderecos() {
-			return enderecos;
-		}
-
-		public void setEnderecos(List<Endereço> enderecos) {
-			this.enderecos = enderecos;
-		}
 
 	public Cliente(Integer idCliente, String nome, String cpfOuCnpj, String email, TipoCliente tipo) {
 		super();
@@ -61,6 +54,15 @@ public class Cliente implements Serializable {
 		this.cpfOuCnpj = cpfOuCnpj;
 		this.email = email;
 		this.tipo = tipo.getCod();
+	
+	}
+
+	public List<Endereco> getEnderecos() {
+		return enderecos;
+	}
+
+	public void setEnderecos(List<Endereco> enderecos) {
+		this.enderecos = enderecos;
 	}
 
 	public Integer getIdCliente() {
@@ -105,6 +107,10 @@ public class Cliente implements Serializable {
 
 	public Integer getTipo() {
 		return tipo;
+	}
+
+	public void setTipo(Integer tipo) {
+		this.tipo = tipo;
 	}
 
 	@Override

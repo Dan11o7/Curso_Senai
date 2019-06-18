@@ -1,9 +1,9 @@
-package com.ryanprado.senai.repositories;
+package com.Danilo.senai.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.ryanprado.senai.domain.Cidade;
+import com.Danilo.senai.domain.Cidade;
 
 @Repository
 public interface CidadeRepository extends JpaRepository<Cidade, Integer>{

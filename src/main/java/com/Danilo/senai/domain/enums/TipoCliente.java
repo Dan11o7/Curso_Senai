@@ -1,4 +1,4 @@
-package com.ryanprado.senai.domain.enums;
+package com.Danilo.senai.domain.enums;
 
 public enum TipoCliente {
 	//Será nosso estático

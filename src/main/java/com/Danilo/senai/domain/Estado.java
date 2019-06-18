@@ -1,4 +1,4 @@
-package com.ryanprado.senai.domain;
+package com.Danilo.senai.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
